@@ -43,24 +43,17 @@ function Person(nombre,edad){
 
 //Ejercicio N° 4
 const multiplicarPorDos = (numeros) => {
-    numerosPorDos=[];
     
     if (typeof numeros !== 'object') return alert('Debes ingresar un array con dos números');
     if (numeros.length == 0) return alert('No podemos calcular elementos vacíos');
     if (numeros.length != 2) return alert('Sólo se admiten dos números'); 
     
-    numeros.forEach(numero => {
-        if(!regexEsNumero.test(numero)) {
-            return alert('Ambos elementos deben ser números');
-        } else {
-            numerosPorDos.push(numero*2);
-        }
-    }); 
+    let sonNumeros = numeros.map(numero =>  regexEsNumero.test(numero));
+    if(!sonNumeros.every(valor=>valor===true)) return  alert('Ambos elementos deben ser numeros'); 
 
-    if(numerosPorDos.length == 2){
-        return numerosPorDos;
-    }
+     return numeros.map (numero => numero *2);
 }
+
 
 //Ejercicio N° 5
 const filterEvenNumbers = (numeros)=>{
